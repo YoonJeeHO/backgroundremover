@@ -1,8 +1,7 @@
 # BackgroundRemover
-![Background Remover](https://raw.githubusercontent.com/nadermx/backgroundremover/main/examplegif/backgroundremoverexample.png)
-<img alt="background remover video" src="/examplegif/backgroundremoverprocessed.gif" height="200" /><br>
-BackgroundRemover is a command line tool to remove background from [video](https://backgroundremover.app/video/)
-and [image](https://backgroundremover.app/image/), made by [nadermx](https://john.nader.mx) to power [https://BackgroundRemover.app](https://backgroundremover.app). If you wonder why it was made read this [short blog post](https://johnathannader.com/my-first-open-source-project/).<br>
+![Background Remover](/examplefiles/backgroundremoverexample.png)
+<img alt="background remover video" src="/examplefiles/backgroundremoverprocessed.gif" height="200" /><br>
+BackgroundRemover is a command line tool to remove background from [image](https://github.com/nadermx/backgroundremover#image) and [video](https://github.com/nadermx/backgroundremover#video), made by [nadermx](https://john.nader.mx) to power [https://BackgroundRemover.app](https://backgroundremover.app). If you wonder why it was made read this [short blog post](https://johnathannader.com/my-first-open-source-project/).<br>
 
 
 ### Requirements
@@ -70,7 +69,11 @@ backgroundremover -i "/path/to/video.mp4" -tv -o "output.mov"
 ```
 ### remove background from local video and overlay it over other video
 ```bash
-backgroundremover -i "/path/to/video.mp4" -tov -tv "/path/to/videtobeoverlayed.mp4" -o "output.mov"
+backgroundremover -i "/path/to/video.mp4" -tov "/path/to/videtobeoverlayed.mp4" -o "output.mov"
+```
+### remove background from local video and overlay it over an image
+```bash
+backgroundremover -i "/path/to/video.mp4" -toi "/path/to/videtobeoverlayed.mp4" -o "output.mov"
 ```
 
 ### remove background from video and make transparent gif
@@ -95,6 +98,12 @@ Change the framerate of the video (default is set to 30)
 backgroundremover -i "/path/to/video.mp4" -fr 30 -tv -o "output.mov"
 ```
 
+Set total number of frames of the video (default is set to -1, ie the remove background from full video)
+
+```bash
+backgroundremover -i "/path/to/video.mp4" -fl 150 -tv -o "output.mov"
+```
+
 Change the gpu batch size of the video (default is set to 1)
 
 ```bash
@@ -106,9 +115,9 @@ Change the number of workers working on video (default is set to 1)
 ```bash
 backgroundremover -i "/path/to/video.mp4" -wn 4 -tv -o "output.mov"
 ```
-change the model for diferent background removal methods between `u2netp`, `u2net`, or `u2net_human_seg`
+change the model for diferent background removal methods between `u2netp`, `u2net`, or `u2net_human_seg` and limit the frames to 150
 ```bash
-backgroundremover -i "/path/to/video.mp4" -m "u2net_human_seg"-tv -o "output.mov"
+backgroundremover -i "/path/to/video.mp4" -m "u2net_human_seg" -fl 150 -tv -o "output.mov"
 ```
 
 ## Todo
